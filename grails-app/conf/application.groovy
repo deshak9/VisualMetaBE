@@ -1,0 +1,1 @@
+grails.plugin.emailAlert.onlySixWeeks = true
