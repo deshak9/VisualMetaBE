@@ -1,5 +1,3 @@
-import javax.servlet.http.HttpServletResponse
-
 class UserAuthController extends AbstractController {
 
     def login() {
@@ -10,12 +8,12 @@ class UserAuthController extends AbstractController {
         if (u) {
             if (u.validatePassword(req.password)) {
                 session.user = u
-                render HttpServletResponse.SC_OK
+                renderSuccess(u)
             } else {
-                renderBadRequest("Username or password incorrect")
+                renderError("Username or password incorrect")
             }
         } else {
-            renderBadRequest("User doesn't exist")
+            renderError("User doesn't exist")
         }
     }
 
@@ -25,19 +23,24 @@ class UserAuthController extends AbstractController {
         print(sessionUser)
         print(User.list().find { req.username == it.username })
         if (sessionUser) {
-            renderBadRequest("Logged in user can not create account")
+            renderError("Logged in user can not create account")
         } else if (User.list().find { req.username == it.username }) {
-            renderBadRequest("User name already exist")
+            renderError("User name already exist")
         } else {
             def u = new User(firstName: req.firstName, lastName: req.lastName, username: req.username, password: req.password)
             if (!u.save()) {
-                renderBadRequest()
+                renderError()
             } else {
                 session.user = u
-                render HttpServletResponse.SC_OK
+                renderSuccess(u)
             }
         }
 
+    }
+
+    def logout() {
+        session.user = null
+        renderSuccess(null)
     }
 }
 

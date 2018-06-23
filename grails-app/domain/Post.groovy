@@ -9,7 +9,6 @@ class Post {
     @JsonIgnore
     @JsonProperty("userId")
     String userId
-
     String title
     String content
     String createdDate
