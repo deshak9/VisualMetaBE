@@ -1,4 +1,6 @@
 import grails.persistence.Entity
+import org.grails.plugins.codecs.HexCodec
+import org.grails.plugins.codecs.SHA256BytesCodec
 
 @Entity
 class Person {
@@ -28,20 +30,23 @@ class Person {
     }
 
     def beforeInsert() {
-        encodePassword()
+        password = encodePassword(password)
     }
 
     def beforeUpdate() {
         if (isDirty('password')) {
-            encodePassword()
+            password = encodePassword(password)
         }
     }
 
     def validatePassword(password) {
-        return this.password == springSecurityService.encodePassword(password)
+        return this.password == encodePassword(password)
     }
 
-    protected void encodePassword() {
-        password = springSecurityService.encodePassword(password)
+    protected String encodePassword(String password) {
+        println(username + "   " + password + "    " + this.password)
+        def hash = HexCodec.encode(SHA256BytesCodec.encode(password + username + "salft value afsafjsaklfjsaflksajflksajfsafbasjfbasjfsbakfsabfjkasfbkjasbf"))
+        println(hash)
+        return hash
     }
 }

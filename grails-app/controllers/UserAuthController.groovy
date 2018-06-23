@@ -2,13 +2,18 @@ import javax.servlet.http.HttpServletResponse
 
 class UserAuthController extends AbstractController {
 
-    def authenticateUser() {
+    def login() {
         def req = request.JSON
         User u = User.findByUsername(req.username)
-        print(u)
-        print(req.username)
-        if (u.validatePassword(req.password)) {
-            
+        println(u)
+        println(req.username)
+        if (u) {
+            if (u.validatePassword(req.password)) {
+                session.user = u
+                render HttpServletResponse.SC_OK
+            } else {
+                renderBadRequest("Username or password incorrect")
+            }
         } else {
             renderBadRequest("User doesn't exist")
         }

@@ -6,6 +6,7 @@ db/
 build/
 .idea
 *.iml
+out/
 *.ipr
 *.iws
 .project

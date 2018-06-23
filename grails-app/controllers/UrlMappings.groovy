@@ -7,10 +7,10 @@ class UrlMappings {
             }
         }
 
-        /*"/login"(controller: "userAuth", parseRequest: true) {
+        "/login"(controller: "userAuth", parseRequest: true) {
             action = [POST: 'login']
         }
-        */
+
         "/register"(controller: "userAuth", parseRequest: true) {
             action = [POST: 'registerUser']
         }
