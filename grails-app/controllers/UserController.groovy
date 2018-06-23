@@ -8,7 +8,7 @@ class UserController {
 //        def springSecurityService
 
 //        if (springSecurityService.isLoggedIn()) {
-            render User.list() as JSON
+            render Person.list() as JSON
 //        } else {
 //            response.sendError HttpServletResponse.SC_UNAUTHORIZED
 //        }

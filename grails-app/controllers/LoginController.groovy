@@ -1,7 +1,0 @@
-class LoginController {
-    def login() {
-
-    }
-}
-
-
