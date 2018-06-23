@@ -1,29 +1,27 @@
+import grails.converters.JSON
+
+import javax.servlet.http.HttpServletResponse
+
 class UserController {
 
     def index() {
-        def txt = ""
-        User.list().collect { User p ->
-            txt += "$p.firstName $p.lastName".toString()
-        }
-        render txt
+//        def springSecurityService
+
+//        if (springSecurityService.isLoggedIn()) {
+            render User.list() as JSON
+//        } else {
+//            response.sendError HttpServletResponse.SC_UNAUTHORIZED
+//        }
     }
 
     def save() {
-        def p1 = new User(firstName: "Fred", lastName: "ojha")
+        def p1 = new User(firstName: "Fred", lastName: "ojha", userName: 'asf', hashedPassword: 'safsaf', token: 'asfsa')
         p1.save()
+        render "success"
     }
 
-    public List<String> user() {
-        User.list().collect { User p ->
-            "$p.firstName $p.lastName".toString()
-        }
-
-        render('heelo')
-    }
-
-    def saveUser() {
-        def p = new User(name: "Fred", age: 40, lastVisit: new Date())
-        p.save()
+    def delete() {
+        render "success"
     }
 }
 

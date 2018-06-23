@@ -7,7 +7,15 @@ class UrlMappings {
             }
         }
 
+        /*"authenticate"(controller: "login", parseRequest: true) {
+            action = [POST: 'login']
+        }*/
+
         "/api/users"(controller: "user", parseRequest: true) {
+            action = [GET: "index", POST: 'save', PUT: "update", DELETE: "delete"]
+        }
+
+        "/api/posts"(controller: "post", parseRequest: true) {
             action = [GET: "index", POST: 'save', PUT: "update", DELETE: "delete"]
         }
 

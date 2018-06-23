@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
 import grails.persistence.Entity
 
 @Entity
@@ -6,4 +7,7 @@ import grails.persistence.Entity
 class User {
     String firstName
     String lastName
+    String userName
+    String hashedPassword
+    String token
 }
