@@ -59,8 +59,10 @@ dependencies {
     compile "org.grails:grails-web-boot"
 
     compile "org.grails.plugins:hibernate"
-    compile "org.grails.plugins:cache"
     compile "org.hibernate:hibernate-ehcache"
+
+    compile "org.grails.plugins:cache"
+
     compile "org.grails.plugins:scaffolding"
     compile "org.codehaus.groovy.modules.http-builder:http-builder:0.7.1"
     runtime "org.grails.plugins:asset-pipeline"
