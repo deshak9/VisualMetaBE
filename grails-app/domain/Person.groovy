@@ -25,10 +25,6 @@ class Person {
         password column: '`password`'
     }
 
-    Set<Authority> getAuthorities() {
-        PersonAuthority.findAllByPerson(this).collect { it.authority } as Set
-    }
-
     def beforeInsert() {
         password = encodePassword(password)
     }

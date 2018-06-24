@@ -1,4 +1,3 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import grails.persistence.Entity
 
 @Entity
