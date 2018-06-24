@@ -1,3 +1,5 @@
+package com.visual
+
 import grails.persistence.Entity
 
 @Entity

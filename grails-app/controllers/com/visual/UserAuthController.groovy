@@ -1,3 +1,5 @@
+package com.visual
+
 class UserAuthController extends AbstractController {
 
     def login() {

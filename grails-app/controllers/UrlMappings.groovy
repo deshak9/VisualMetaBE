@@ -19,21 +19,12 @@ class UrlMappings {
             action = [POST: 'logout']
         }
 
-        "/api/users"(controller: "user", parseRequest: true) {
-            action = [GET: "index", POST: 'save', PUT: "update", DELETE: "delete"]
-        }
-
         "/api/posts"(controller: "post", parseRequest: true) {
             action = [GET: "index", POST: 'save', PUT: "update", DELETE: "delete"]
         }
 
         "/api/posts/$id"(controller: "post", parseRequest: true) {
             action = [DELETE: "delete"]
-        }
-
-
-        "/api/test"(controller: "test", parseRequest: true) {
-            action = [GET: "show"]
         }
 
         "/"(view: "/index")

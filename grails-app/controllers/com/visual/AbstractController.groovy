@@ -1,3 +1,5 @@
+package com.visual
+
 import grails.converters.JSON
 import org.springframework.http.HttpStatus
 

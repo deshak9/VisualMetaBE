@@ -1,3 +1,5 @@
+package com.visual
+
 import grails.persistence.Entity
 import org.grails.plugins.codecs.HexCodec
 import org.grails.plugins.codecs.SHA256BytesCodec

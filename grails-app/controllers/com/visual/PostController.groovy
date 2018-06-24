@@ -1,5 +1,11 @@
+package com.visual
+
 class PostController extends AbstractController {
 
+    /**
+     * Will return all Posts belongs to current loggedin user
+     * @return
+     */
     def index() {
         def u = session.user
         if (u) {
@@ -12,6 +18,10 @@ class PostController extends AbstractController {
         }
     }
 
+    /**
+     * Save newly created post of current use
+     * @return
+     */
     def save() {
         def req = request.JSON
         def u = session.user

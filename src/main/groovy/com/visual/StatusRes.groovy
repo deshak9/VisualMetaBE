@@ -1,3 +1,5 @@
+package com.visual
+
 import com.fasterxml.jackson.annotation.JsonInclude
 
 class StatusRes {
