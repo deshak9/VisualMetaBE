@@ -11,7 +11,7 @@ class UserAuthController extends AbstractController {
                 renderError("Username or password incorrect")
             }
         } else {
-            renderError("User doesn't exist")
+            renderError("Username ${req.username} doesn't exist")
         }
     }
 
@@ -21,7 +21,7 @@ class UserAuthController extends AbstractController {
         if (sessionUser) {
             renderError("Logged in user can not create account")
         } else if (User.list().find { req.username == it.username }) {
-            renderError("User name already exist")
+            renderError("Username already exist")
         } else {
             def u = new User(firstName: req.firstName, lastName: req.lastName, username: req.username, password: req.password)
             if (!u.save()) {
