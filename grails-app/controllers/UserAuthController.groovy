@@ -36,7 +36,7 @@ class UserAuthController extends AbstractController {
 
     def logout() {
         session.user = null
-        renderSuccess(null)
+        renderSuccess("User logged out")
     }
 }
 

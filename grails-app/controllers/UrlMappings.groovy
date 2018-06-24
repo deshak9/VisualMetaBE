@@ -16,7 +16,7 @@ class UrlMappings {
         }
 
         "/api/logout"(controller: "userAuth", parseRequest: true) {
-            action = [GET: 'logout']
+            action = [POST: 'logout']
         }
 
         "/api/users"(controller: "user", parseRequest: true) {
