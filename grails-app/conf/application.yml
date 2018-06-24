@@ -1,5 +1,7 @@
 ---
 grails:
+    resources:
+        pattern: '/**' # This setting is required to access resources in '/public'.
     profile: web
     codegen:
         defaultPackage: testproject

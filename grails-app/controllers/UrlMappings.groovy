@@ -1,11 +1,8 @@
 class UrlMappings {
 
     static mappings = {
-        "/$controller/$action?/$id?(.$format)?" {
-            constraints {
-                // apply constraints here
-            }
-        }
+        "/"(redirect: "/ui/")
+        "/ui/**"(controller: "appRender")
 
         "/api/login"(controller: "userAuth", parseRequest: true) {
             action = [GET: 'logout', POST: 'login']
@@ -26,8 +23,6 @@ class UrlMappings {
         "/api/posts/$id"(controller: "post", parseRequest: true) {
             action = [DELETE: "delete"]
         }
-
-        "/"(view: "/index")
         "500"(view: '/error')
         "404"(view: '/notFound')
     }
