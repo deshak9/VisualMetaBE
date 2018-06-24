@@ -7,4 +7,7 @@ class Post {
     String title
     String content
     String createDate
+    static mapping = {
+        delegate.content column: "content", length: 2000
+    }
 }
