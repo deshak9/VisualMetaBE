@@ -23,4 +23,10 @@ abstract class AbstractController {
                 response: rsp,
                 statusCode: HttpStatus.OK.value()) as JSON
     }
+
+    def unauthorizedAccess() {
+        response.status = HttpStatus.UNAUTHORIZED.value()
+        render new StatusRes(error: true,
+                statusCode: HttpStatus.UNAUTHORIZED.value()) as JSON
+    }
 }

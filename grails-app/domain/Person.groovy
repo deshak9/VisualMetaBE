@@ -44,9 +44,7 @@ class Person {
     }
 
     protected String encodePassword(String password) {
-        println(username + "   " + password + "    " + this.password)
         def hash = HexCodec.encode(SHA256BytesCodec.encode(password + username + "salft value afsafjsaklfjsaflksajflksajfsafbasjfbasjfsbakfsabfjkasfbkjasbf"))
-        println(hash)
         return hash
     }
 }

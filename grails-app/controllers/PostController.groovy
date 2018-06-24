@@ -1,14 +1,49 @@
-import grails.converters.JSON
-
-class PostController {
+class PostController extends AbstractController {
 
     def index() {
-        render Post.list() as JSON
+        def u = session.user
+        if (u) {
+            def posts = Post.findAllByUserId(u.id)
+            renderSuccess(posts.collect {
+                [title: it.title, content: it.content, createDate: it.createDate, id: it.id]
+            })
+        } else {
+            unauthorizedAccess()
+        }
     }
 
     def save() {
-        def p1 = new Post(userId: 'sfsa', title: "Title", content: "content", createdDate: 'today')
-        p1.save()
+        def req = request.JSON
+        def u = session.user
+
+        if (u) {
+            def p = new Post(userId: u.id, title: req.title, content: req.content, createDate: req.createDate)
+            if (!p.save()) {
+                renderError("Something went wrong")
+            } else {
+                renderSuccess("Saved")
+            }
+        } else {
+            unauthorizedAccess()
+        }
+    }
+
+    def delete() {
+        def postId = params.id
+        def u = session.user
+        if (u) {
+            def p = Post.findByUserIdAndId(u.id, postId)
+            println(u)
+            println(p)
+            if (!p) {
+                renderError("Post not found")
+            } else {
+                p.delete()
+                renderSuccess("Post Deleted")
+            }
+        } else {
+            unauthorizedAccess()
+        }
     }
 }
 

@@ -3,8 +3,6 @@ class UserAuthController extends AbstractController {
     def login() {
         def req = request.JSON
         User u = User.findByUsername(req.username)
-        println(u)
-        println(req.username)
         if (u) {
             if (u.validatePassword(req.password)) {
                 session.user = u
@@ -20,8 +18,6 @@ class UserAuthController extends AbstractController {
     def registerUser() {
         def req = request.JSON
         def sessionUser = session.user
-        print(sessionUser)
-        print(User.list().find { req.username == it.username })
         if (sessionUser) {
             renderError("Logged in user can not create account")
         } else if (User.list().find { req.username == it.username }) {
