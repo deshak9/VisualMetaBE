@@ -8,7 +8,7 @@ class UserAuthController extends AbstractController {
         if (u) {
             if (u.validatePassword(req.password)) {
                 session.user = u
-                renderSuccess(u)
+                renderSuccess([firstName: u.firstName, lastName: u.lastName, username: u.username])
             } else {
                 renderError("Username or password incorrect")
             }
@@ -30,7 +30,7 @@ class UserAuthController extends AbstractController {
                 renderError()
             } else {
                 session.user = u
-                renderSuccess(u)
+                renderSuccess([firstName: u.firstName, lastName: u.lastName, username: u.username])
             }
         }
 
