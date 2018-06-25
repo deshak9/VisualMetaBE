@@ -26,6 +26,7 @@ class UrlMappings {
 
         "/"(redirect: "/visualmeta/ui/")
         "/visualmeta"(redirect: "/visualmeta/ui/")
+        "/visualmeta/ui"(controller: "appRender")
         "/visualmeta/ui/**"(controller: "appRender")
 
         "500"(view: '/error')

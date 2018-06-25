@@ -82,3 +82,5 @@ task wrapper(type: Wrapper) {
 }
 
 task stage(dependsOn: ['bootRun'])
+
+apply plugin: 'war'
