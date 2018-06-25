@@ -26,6 +26,10 @@ abstract class AbstractController {
                 statusCode: HttpStatus.OK.value()) as JSON
     }
 
+    /**
+     * Will render Unauthorized exception
+     * @return
+     */
     def unauthorizedAccess() {
         response.status = HttpStatus.UNAUTHORIZED.value()
         render new StatusRes(error: true,

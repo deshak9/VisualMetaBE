@@ -41,6 +41,7 @@ class Person {
         return this.password == encodePassword(password)
     }
 
+    // Will generate one way Hash for the password, so technically, we don't store user's readable password
     protected String encodePassword(String password) {
         def hash = HexCodec.encode(SHA256BytesCodec.encode(password + username + "salft value afsafjsaklfjsaflksajflksajfsafbasjfbasjfsbakfsabfjkasfbkjasbf"))
         return hash
